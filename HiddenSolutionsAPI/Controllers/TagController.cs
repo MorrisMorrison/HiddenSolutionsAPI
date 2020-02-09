@@ -1,10 +1,15 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using HiddenSolutionsAPI.Persistence.Model;
 using HiddenSolutionsAPI.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HiddenSolutionsAPI.Controllers
 {
-    public class TagController:ControllerBase, ICreationController<Tag>
+    [ApiController]
+    [Route("api/[controller]")]
+    public class TagController:ControllerBase, ICrudController<Tag>
     {
         public ICrudService<Tag> Service { get; set; }
 
@@ -13,9 +18,51 @@ namespace HiddenSolutionsAPI.Controllers
             Service = p_service;
         }
 
+        [HttpPost]
         public IActionResult Create([FromBody] Tag p_entity)
         {
             Service.Create(p_entity);
+
+            return Ok();
+        }
+        
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery(Name = "id")]string p_id)
+        {
+            if (!string.IsNullOrEmpty(p_id))
+            {
+                Tag tag = await Service.Get(p_id);
+                if (tag != null)
+                {
+                    return Ok(tag);
+                }
+                
+                return NoContent();
+            }
+            else
+            {
+                IEnumerable<Tag> tags = await Service.GetAll();
+                if (tags.ToList().Any())
+                {
+                    return Ok(tags);
+                }
+
+                return NoContent();
+            }
+        }
+
+        [HttpPatch]
+        public IActionResult Update([FromBody]Tag p_entity)
+        {
+            Service.Update(p_entity);
+
+            return Ok();
+        }
+
+        [HttpDelete]
+        public IActionResult Delete([FromQuery(Name = "id")]string p_id)
+        {
+            Service.Delete(p_id);
 
             return Ok();
         }

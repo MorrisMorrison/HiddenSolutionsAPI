@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using HiddenSolutionsAPI.Persistence.Dao;
 using HiddenSolutionsAPI.Persistence.Model;
@@ -18,9 +19,14 @@ namespace HiddenSolutionsAPI.Service
             Dao.CreateAsync(p_entity);
         }
 
-        public async Task<Solution> Get(long p_id)
+        public async Task<Solution> Get(string p_id)
         {
             return await Dao.GetAsync(p_id);
+        }
+
+        public async Task<IEnumerable<Solution>> GetAll()
+        {
+            return await Dao.GetAllAsync();
         }
 
         public void Update(Solution p_entity)
@@ -28,7 +34,7 @@ namespace HiddenSolutionsAPI.Service
             Dao.UpdateAsync(p_entity);
         }
 
-        public void Delete(long p_id)
+        public void Delete(string p_id)
         {
             Dao.DeleteAsync(p_id);
         }

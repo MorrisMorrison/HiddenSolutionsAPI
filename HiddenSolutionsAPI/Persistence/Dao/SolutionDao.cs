@@ -20,9 +20,9 @@ namespace HiddenSolutionsAPI.Persistence.Dao
             DbAccess.GetCollection<Solution>().InsertOne(p_entity);
         }
 
-        public async Task<Solution> GetAsync(long p_id)
+        public async Task<Solution> GetAsync(string p_id)
         {
-            return await DbAccess.GetCollection<Solution>().Find(p_solution => p_solution.Id == p_id).FirstOrDefaultAsync();
+            return await DbAccess.GetCollection<Solution>().Find(p_solution => p_solution.Id.Equals(p_id)).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Solution>> GetAllAsync()
@@ -32,12 +32,12 @@ namespace HiddenSolutionsAPI.Persistence.Dao
 
         public async void UpdateAsync(Solution p_entity)
         {
-            await DbAccess.GetCollection<Solution>().ReplaceOneAsync(p_solution => p_solution.Id == p_entity.Id, p_entity);
+            await DbAccess.GetCollection<Solution>().ReplaceOneAsync(p_solution => p_solution.Id.Equals(p_entity.Id), p_entity);
         }
 
-        public void DeleteAsync(long p_id)
+        public void DeleteAsync(string p_id)
         {
-            DbAccess.GetCollection<Solution>().DeleteOneAsync(p_solution => p_solution.Id == p_id);
+            DbAccess.GetCollection<Solution>().DeleteOneAsync(p_solution => p_solution.Id.Equals(p_id));
         }
     }
 }

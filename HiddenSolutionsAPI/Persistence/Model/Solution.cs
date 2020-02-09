@@ -1,14 +1,19 @@
 using System;
 using System.Collections.Generic;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace HiddenSolutionsAPI.Persistence.Model
 {
-    public class Solution
+    public class Solution:IEntity
     {
-        public long Id { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
         
         public string Title { get; set; }
-        public string Description { get; set; }
+        public string ProblemDescription { get; set; }
+        public string SolutionDescription { get; set; }
         
         public Category Category { get; set; }
         public IList<Tag> Tags { get; set; }
@@ -19,6 +24,8 @@ namespace HiddenSolutionsAPI.Persistence.Model
         
         public int Upvotes { get; set; }
         public int Downvotes { get; set; }
+        
+        public Uri Link { get; set; }
         
         
     }

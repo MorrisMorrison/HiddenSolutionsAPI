@@ -9,16 +9,9 @@ namespace HiddenSolutionsAPI.Controllers
         ICrudService<T> Service { get; set; }
 
         IActionResult Create([FromBody] T p_entity);
-        Task<IActionResult> Get([FromQuery(Name = "id")] long p_id);
+        Task<IActionResult> Get([FromQuery(Name = "id")] string p_id);
         IActionResult Update([FromBody] T p_entity);
-        IActionResult Delete([FromQuery(Name = "id")] long p_id);
-
+        IActionResult Delete([FromQuery(Name = "id")] string p_id);
     }
 
-    public interface ICreationController<T>
-    {
-        ICrudService<T> Service { get; set; }
-
-        IActionResult Create([FromBody] T p_entity);
-    }
 }

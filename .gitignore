@@ -1,2 +1,4 @@
 HiddenSolutionsAPI/bin/
 HiddenSolutionsAPI/obj/
+HiddenSolutionsAPI/*.blob
+HiddenSolutionsAPI/data/

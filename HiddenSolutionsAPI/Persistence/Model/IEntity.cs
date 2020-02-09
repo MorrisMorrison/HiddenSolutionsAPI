@@ -4,12 +4,11 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace HiddenSolutionsAPI.Persistence.Model
 {
-    public class Tag
+    public interface IEntity
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
-        public string Value { get; set; }
-        public DateTime CreatedAt { get; set; }
+        string Id { get; set; }
+        DateTime CreatedAt { get; set; }
     }
 }

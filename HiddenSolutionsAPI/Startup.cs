@@ -1,16 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+using HiddenSolutionsAPI.Persistence;
+using HiddenSolutionsAPI.Persistence.Dao;
+using HiddenSolutionsAPI.Persistence.Model;
+using HiddenSolutionsAPI.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace HiddenSolutionsAPI
 {
@@ -27,6 +24,17 @@ namespace HiddenSolutionsAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            
+            services.AddSingleton<IDaoAsync<Category>, CategoryDao>();
+            services.AddSingleton<IDaoAsync<Tag>, TagDao>();
+            services.AddSingleton<IDaoAsync<Solution>, SolutionDao>();
+            services.AddSingleton<ICrudService<Tag>, TagService>();
+            services.AddSingleton<ICrudService<Category>, CategoryService>();
+            services.AddSingleton<ICrudService<Solution>, SolutionService>();
+            services.AddSingleton<ISearchService, SearchService>();
+            services.AddSingleton<IDbAccess, DbAccess>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,9 +44,11 @@ namespace HiddenSolutionsAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseHttpsRedirection();
+            }
 
-
-            app.UseHttpsRedirection();
 
             app.UseRouting();
 

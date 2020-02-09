@@ -1,3 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using HiddenSolutionsAPI.Persistence.Dao;
 using HiddenSolutionsAPI.Persistence.Model;
 using HiddenSolutionsAPI.Service;
 using Microsoft.AspNetCore.Mvc;
@@ -6,8 +11,8 @@ namespace HiddenSolutionsAPI.Controllers
 {
     
     [ApiController]
-    [Route("[controller]")]
-    public class CategoryController:ControllerBase, ICreationController<Category>
+    [Route("api/[controller]")]
+    public class CategoryController:ControllerBase, ICrudController<Category>
     {
         public ICrudService<Category> Service { get; set; }
 
@@ -16,9 +21,53 @@ namespace HiddenSolutionsAPI.Controllers
             Service = p_service;
         }
 
+        [HttpPost]
         public IActionResult Create([FromBody]Category p_entity)
         {
             Service.Create(p_entity);
+
+            return Ok();
+        }
+        
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery(Name="id")]string p_id)
+        {
+            if (!string.IsNullOrEmpty(p_id))
+            {
+                Category category = await Service.Get(p_id);
+                if (category != null)
+                {
+                    return Ok(category);
+                }
+                
+                return NoContent();
+            }
+            else
+            {
+                IEnumerable<Category> categories = await Service.GetAll();
+                if (categories.ToList().Any())
+                {
+                    return Ok(categories);
+                }
+
+                return NoContent();
+            }
+            
+
+        }
+
+        [HttpPatch]
+        public IActionResult Update([FromBody]Category p_entity)
+        {
+            Service.Update(p_entity);
+
+            return Ok();
+        }
+
+        [HttpDelete]
+        public IActionResult Delete([FromQuery(Name = "id")]string p_id)
+        {
+            Service.Delete(p_id);
 
             return Ok();
         }

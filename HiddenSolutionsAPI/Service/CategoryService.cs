@@ -14,9 +14,9 @@ namespace HiddenSolutionsAPI.Service
             Dao = p_dao;
         }
 
-        public void Create(Category p_entity)
+        public async  Task<Category> Create(Category p_entity)
         {
-            Dao.CreateAsync(p_entity);
+            return await Dao.CreateAsync(p_entity);
         }
 
         public async Task<Category> Get(string p_id)

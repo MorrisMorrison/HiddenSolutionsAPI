@@ -14,9 +14,9 @@ namespace HiddenSolutionsAPI.Service
             Dao = p_dao;
         }
 
-        public void Create(Tag p_entity)
+        public async Task<Tag> Create(Tag p_entity)
         {
-            Dao.CreateAsync(p_entity);
+            return await Dao.CreateAsync(p_entity);
         }
 
         public async Task<Tag> Get(string p_id)

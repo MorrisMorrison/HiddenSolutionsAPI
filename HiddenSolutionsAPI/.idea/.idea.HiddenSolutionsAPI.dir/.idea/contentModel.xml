@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/.Rider2019.3/system/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.Rider2019.3/system/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_.19.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Config" t="Include">
+        <e p="DatabaseConfig.cs" t="Include" />
+      </e>
+      <e p="Constants" t="Include">
+        <e p="DBConnectionConstants.cs" t="Include" />
+      </e>
+      <e p="Controllers" t="Include">
+        <e p="CategoryController.cs" t="Include" />
+        <e p="IController.cs" t="Include" />
+        <e p="SearchController.cs" t="Include" />
+        <e p="SolutionController.cs" t="Include" />
+        <e p="TagController.cs" t="Include" />
+      </e>
+      <e p="HiddenSolutionsAPI.csproj" t="IncludeRecursive" />
+      <e p="Persistence" t="Include">
+        <e p="Dao" t="Include">
+          <e p="CategoryDao.cs" t="Include" />
+          <e p="IDao.cs" t="Include" />
+          <e p="SolutionDao.cs" t="Include" />
+          <e p="TagDao.cs" t="Include" />
+        </e>
+        <e p="DbAccess.cs" t="Include" />
+        <e p="Model" t="Include">
+          <e p="Category.cs" t="Include" />
+          <e p="IEntity.cs" t="Include" />
+          <e p="Image.cs" t="Include" />
+          <e p="Path.cs" t="Include" />
+          <e p="Solution.cs" t="Include" />
+          <e p="Tag.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Program.cs" t="Include" />
+      <e p="Properties" t="Include">
+        <e p="launchSettings.json" t="Include" />
+      </e>
+      <e p="Service" t="Include">
+        <e p="CategoryService.cs" t="Include" />
+        <e p="IService.cs" t="Include" />
+        <e p="SearchService.cs" t="Include" />
+        <e p="SolutionService.cs" t="Include" />
+        <e p="TagService.cs" t="Include" />
+      </e>
+      <e p="Startup.cs" t="Include" />
+      <e p="appsettings.Development.json" t="Include" />
+      <e p="appsettings.json" t="Include" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="data" t="Include">
+        <e p="WiredTiger" t="Include" />
+        <e p="WiredTiger.lock" t="Include" />
+        <e p="WiredTiger.turtle" t="Include" />
+        <e p="WiredTiger.wt" t="Include" />
+        <e p="WiredTigerLAS.wt" t="Include" />
+        <e p="_mdb_catalog.wt" t="Include" />
+        <e p="collection-0--4157490086350321967.wt" t="Include" />
+        <e p="collection-0-4773034646570171018.wt" t="Include" />
+        <e p="collection-0-5820156914759742576.wt" t="Include" />
+        <e p="collection-2-4773034646570171018.wt" t="Include" />
+        <e p="collection-2-5820156914759742576.wt" t="Include" />
+        <e p="collection-4-4773034646570171018.wt" t="Include" />
+        <e p="collection-4-5820156914759742576.wt" t="Include" />
+        <e p="collection-8-5820156914759742576.wt" t="Include" />
+        <e p="index-1--4157490086350321967.wt" t="Include" />
+        <e p="index-1-4773034646570171018.wt" t="Include" />
+        <e p="index-1-5820156914759742576.wt" t="Include" />
+        <e p="index-10-5820156914759742576.wt" t="Include" />
+        <e p="index-3-4773034646570171018.wt" t="Include" />
+        <e p="index-3-5820156914759742576.wt" t="Include" />
+        <e p="index-5-4773034646570171018.wt" t="Include" />
+        <e p="index-5-5820156914759742576.wt" t="Include" />
+        <e p="index-6-5820156914759742576.wt" t="Include" />
+        <e p="index-9-5820156914759742576.wt" t="Include" />
+        <e p="mongod.lock" t="Include" />
+        <e p="sizeStorer.wt" t="Include" />
+        <e p="storage.bson" t="Include" />
+      </e>
+      <e p="docker-compose.yml" t="Include" />
+      <e p="mono_crash.mem.13709.1.blob" t="Include" />
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netcoreapp3.1" t="Include">
+            <e p="HiddenSolutionsAPI.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

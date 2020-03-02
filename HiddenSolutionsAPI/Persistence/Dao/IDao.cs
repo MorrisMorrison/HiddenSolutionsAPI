@@ -18,7 +18,7 @@ namespace HiddenSolutionsAPI.Persistence.Dao
     {
         IDbAccess DbAccess { get; set; }
         
-        public void CreateAsync(T p_entity);
+        public Task<T> CreateAsync(T p_entity);
         public Task<T> GetAsync(string p_id);
         public Task<IEnumerable<T>> GetAllAsync();
         public void UpdateAsync(T p_entity);

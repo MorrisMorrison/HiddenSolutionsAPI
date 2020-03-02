@@ -19,11 +19,17 @@ namespace HiddenSolutionsAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Tag p_entity)
+        public async Task<IActionResult> Create([FromBody] Tag p_entity)
         {
-            Service.Create(p_entity);
+            Tag tag = await Service.Create(p_entity);
 
-            return Ok();
+            if (!string.IsNullOrEmpty(tag.Id))
+            {
+                return Ok(tag);
+                
+            }
+
+            return NoContent();
         }
         
         [HttpGet]

@@ -15,9 +15,11 @@ namespace HiddenSolutionsAPI.Persistence.Dao
             DbAccess = p_dbAccess;
         }
 
-        public void CreateAsync(Solution p_entity)
+        
+        public async Task<Solution> CreateAsync(Solution entity)
         {
-            DbAccess.GetCollection<Solution>().InsertOne(p_entity);
+            await  DbAccess.GetCollection<Solution>().InsertOneAsync(entity);
+            return entity;
         }
 
         public async Task<Solution> GetAsync(string p_id)

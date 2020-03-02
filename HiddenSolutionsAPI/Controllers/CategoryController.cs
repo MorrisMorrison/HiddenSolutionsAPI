@@ -22,11 +22,17 @@ namespace HiddenSolutionsAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody]Category p_entity)
+        public async Task<IActionResult>   Create([FromBody]Category p_entity)
         {
-            Service.Create(p_entity);
+            Category category = await Service.Create(p_entity);
 
-            return Ok();
+            if (!string.IsNullOrEmpty(category.Id))
+            {
+                return Ok(category);
+                
+            }
+
+            return NoContent();
         }
         
         [HttpGet]

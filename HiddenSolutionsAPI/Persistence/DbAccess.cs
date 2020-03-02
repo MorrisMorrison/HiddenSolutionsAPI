@@ -35,7 +35,7 @@ namespace HiddenSolutionsAPI.Persistence
             DatabaseConfig config = new DatabaseConfig(_configuration);
 
             _connectionString = config.CONNECTION_STRING;
-            _client = new MongoClient(connectionString: _connectionString);
+            _client = new MongoClient(connectionString: _connectionString + "?retryWrites=false");
             _database = _client.GetDatabase(config.DATABASE);
 
             return _database;

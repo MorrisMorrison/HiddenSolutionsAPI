@@ -15,9 +15,11 @@ namespace HiddenSolutionsAPI.Persistence.Dao
             DbAccess = p_dbAccess;
         }
 
-        public async void CreateAsync(Category p_category)
+        public async Task<Category> CreateAsync(Category p_category)
         {
             await DbAccess.GetCollection<Category>().InsertOneAsync(p_category);
+
+            return p_category;
         }
 
         public async Task<Category> GetAsync(string p_id)

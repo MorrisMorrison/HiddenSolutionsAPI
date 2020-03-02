@@ -22,11 +22,15 @@ namespace HiddenSolutionsAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Solution p_entity)
+        public async Task<IActionResult> Create([FromBody] Solution p_entity)
         {
-            Service.Create(p_entity);
+            Solution solution = await Service.Create(p_entity);
+            if (!string.IsNullOrEmpty(solution.Id))
+            {
+                return Ok(solution);
+            }
 
-            return Ok();
+            return NoContent();
         }
 
         [HttpGet]
